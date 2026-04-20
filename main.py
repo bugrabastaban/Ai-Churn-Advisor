@@ -28,7 +28,7 @@ class CustomerData(BaseModel):
 
 @app.post("/predict")
 def predict_churn(data: CustomerData):
-    # --- 1. KISIM: ML TAHMİNİ (Dünkü yazdığımız kısım) ---
+    
     input_data = {
         "tenure": data.tenure, "MonthlyCharges": data.MonthlyCharges,
         "TotalCharges": data.TotalCharges, "Total_Services": data.Total_Services,
@@ -50,7 +50,7 @@ def predict_churn(data: CustomerData):
     if prediction == 1:
         fatura_durumu = "Evet" if data.Bill_Spike == 1 else "Hayır"
 
-        # Dinamik Promptumuz
+        
         prompt = f"""
         Müşterinin bizi terk etme ihtimali %{round(probability * 100, 1)}.
         Müşteri Profili:
